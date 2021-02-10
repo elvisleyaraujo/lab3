@@ -8,7 +8,7 @@ public:
     ProdutoAlimenticio() = default;
     virtual ~ProdutoAlimenticio() = default;
 
-    virtual void devolver();
+    virtual void devolver() override;
 };
 
 #endif // PRODUTOALIMENTICIO_H

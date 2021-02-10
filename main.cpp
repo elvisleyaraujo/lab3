@@ -3,23 +3,14 @@
 #include "ipi.h"
 #include "produtoalimenticio.h"
 #include "produtoeletronico.h"
+#include <memory>
 
 auto main() -> int
 {
-   IProduto *pro1 = new ProdutoEletronico();
-   IImposto *imp1 = new IPI();
+   std::unique_ptr<IProduto> pro1 { std::make_unique<ProdutoEletronico>() };
+   std::shared_ptr<IImposto> imp1 { std::make_shared<IPI>() };
    pro1->setImposto(imp1);
    pro1->devolver();
-
-   IProduto *pro2 = new ProdutoAlimenticio();
-   IImposto *imp2 = new ICMS();
-   pro2->setImposto(imp2);
-   pro2->devolver();
-
-   delete pro1;
-   delete pro2;
-   delete imp1;
-   delete imp2;
 
    return 0;
 }
